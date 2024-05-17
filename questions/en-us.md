@@ -92,10 +92,25 @@ type Reader interface {
 > **Answer:**
 > The main difference is that arrays have a fixed size, whereas slices have a dynamic size that can grow or shrink as needed.
 
+#### 16. What is `go vet` in Go?
+
+**Answer:**
+>`go vet` is a tool that inspects Go source code to detect suspicious constructs or common errors that the compiler does not catch.
+> By running `go vet`, you can identify and fix these issues before compiling the code, helping to avoid bugs and unexpected behavior.
+
+
+#### 17. What is `go fmt` in Go?
+
+**Answer:**
+> `go fmt` reformats the code to follow Go's formatting conventions, making the code more readable and consistent. This includes:
+> - Correct indentation.
+> - Proper spacing.
+> - Breaking long lines.
+> Using `go fmt` helps maintain a uniform coding style in projects, making the code easier to read and maintain by different developers.
+
 ## ❗❗  Tricky Questions  ❗❗
 
 #### 1. What is the output of the following Go program and why?
-
 ```
 import "fmt"
 package main
@@ -255,3 +270,6 @@ func main() {
 
 > **Explanation:**
 > Buffered channels allow for asynchronous communication between goroutines. This means that a sender can send values to the channel without waiting for a receiver, up to the channel's capacity. Likewise, a receiver can receive values from the channel without waiting for a sender, as long as there are values in the buffer.
+
+
+

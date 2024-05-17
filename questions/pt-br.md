@@ -93,6 +93,21 @@ type Reader interface {
 > **Resposta:**
 > A principal diferença é que arrays têm um tamanho fixo, enquanto slices têm um tamanho dinâmico que pode crescer ou diminuir conforme necessário.
 
+#### 16. O que é `go vet` em Go?
+
+**Resposta:**
+>`go vet` é uma ferramenta que analisa o código-fonte em Go para detectar construções suspeitas ou erros comuns que não são detectados pelo compilador.
+> Ao executar `go vet`, você pode identificar e corrigir esses problemas antes de compilar o código, ajudando a evitar bugs e comportamentos inesperados.
+
+
+#### 17. O que é `go fmt` em Go?
+
+**Resposta:**
+> `go fmt` reformata o código para seguir as convenções de formatação do Go, tornando o código mais legível e consistente. Isso inclui:
+> - Indentação correta.
+> - Espaçamento adequado.
+> - Quebra de linhas longas.
+> Usar `go fmt` ajuda a manter um estilo de código uniforme em projetos, facilitando a leitura e manutenção do código por diferentes desenvolvedores.
 
 ## ❗❗ Perguntas difíceis ❗❗
 
@@ -257,3 +272,7 @@ func main() {
 
 > **Explicação:**
 > Canais com buffer permitem comunicação assíncrona entre goroutines. Isso significa que um remetente pode enviar valores para o canal sem esperar por um receptor, até a capacidade do canal. Da mesma forma, um receptor pode receber valores do canal sem esperar por um remetente, desde que haja valores no buffer.
+
+
+
+
