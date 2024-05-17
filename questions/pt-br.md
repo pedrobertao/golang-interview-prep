@@ -75,10 +75,28 @@ type Reader interface {
 > **Resposta:**
 > A instrução select permite que uma goroutine espere em múltiplas operações de comunicação. Ela bloqueia até que um de seus casos possa prosseguir, então executa esse caso. É usada para lidar com múltiplos canais e evitar bloqueio em um único canal.
 
-## ❗ Perguntas difíceis ❗
+#### 13. O que é um array em Go?
+> **Resposta:**
+> Um array em Go é uma coleção de elementos do mesmo tipo, com um tamanho fixo definido no momento da declaração.
+
+> **Explicação:**
+> Os arrays têm um tamanho fixo, o que significa que o número de elementos é especificado quando o array é declarado e não pode ser alterado. Por exemplo, var arr [5]int declara um array de inteiros com cinco elementos. O tipo do array inclui seu tamanho, então [5]int e [10]int são tipos diferentes.
+
+#### 14. O que é um slice em Go?
+> **Resposta:**
+> Um slice em Go é uma sequência de elementos que é mais flexível que um array, pois seu tamanho pode crescer ou diminuir dinamicamente.
+
+> **Explicação:**
+> Um slice é uma referência a um segmento de um array, permitindo que seu comprimento e capacidade sejam ajustados conforme necessário. Slices são usados com mais frequência do que arrays em Go devido à sua flexibilidade. Por exemplo, var slice []int declara um slice de inteiros. Slices podem ser redimensionados usando funções como append.
+
+#### 15. Qual é a principal diferença entre um array e um slice em Go?
+> **Resposta:**
+> A principal diferença é que arrays têm um tamanho fixo, enquanto slices têm um tamanho dinâmico que pode crescer ou diminuir conforme necessário.
+
+
+## ❗❗ Perguntas difíceis ❗❗
 
 #### 1. Qual é a saída do seguinte programa Go e por quê?
-
 ```
 import "fmt"
 package main
@@ -222,7 +240,20 @@ func main() {
 
 #### 8. Explique a diferença entre um receptor de ponteiro e um
 
- receptor de valor em métodos Go. Quando você usaria cada um?
-
 > **Resposta:**
 > Um receptor de ponteiro permite que métodos modifiquem o valor do receptor e evitem copiá-lo. É usado quando o método precisa mutar o receptor ou quando o receptor é uma struct grande para evitar sobrecarga de desempenho de copiar. Um receptor de valor é usado quando o método não precisa modificar o receptor, e copiar é barato.
+
+### 9. O que é um canal sem buffer em Go?
+
+> **Resposta:**
+> Um canal sem buffer é um tipo de canal que não tem capacidade para armazenar valores. Quando um valor é enviado para um canal sem buffer, a goroutine que envia é bloqueada até que outra goroutine receba o valor do canal. Da mesma forma, uma goroutine que recebe é bloqueada até que um valor seja enviado para o canal.
+
+> **Explicação:**
+> Canais sem buffer impõem uma sincronização estrita entre as goroutines de envio e recebimento. Isso significa que as operações de envio e recebimento acontecem simultaneamente, garantindo que ambas as goroutines coordenem de perto.
+
+#### 10. O que é um canal com buffer em Go?
+> **Resposta:**
+> Um canal com buffer é um tipo de canal que tem capacidade para armazenar um número específico de valores. Quando um valor é enviado para um canal com buffer, a goroutine que envia só é bloqueada se o canal estiver cheio. Da mesma forma, a goroutine que recebe só é bloqueada se o canal estiver vazio.
+
+> **Explicação:**
+> Canais com buffer permitem comunicação assíncrona entre goroutines. Isso significa que um remetente pode enviar valores para o canal sem esperar por um receptor, até a capacidade do canal. Da mesma forma, um receptor pode receber valores do canal sem esperar por um remetente, desde que haja valores no buffer.

@@ -9,7 +9,6 @@
 
 > **Answer:**
 > You can declare a variable using the var keyword or the short declaration operator :=. For example:
-
 ```
 var x int
 x = 10 // or
@@ -75,7 +74,25 @@ type Reader interface {
 > **Answer:**
 > The select statement allows a goroutine to wait on multiple communication operations. It blocks until one of its cases can proceed, then executes that case. It is used to handle multiple channels and avoid blocking on a single channel.
 
-## ❗  Tricky Questions  ❗
+#### 13. What is an array in Go?
+> **Answer:**
+> An array in Go is a collection of elements of the same type, with a fixed size defined at the time of declaration.
+
+> **Explanation:**
+> Arrays have a fixed size, which means the number of elements is specified when the array is declared and cannot be changed. For example, `var arr [5]int` declares an array of integers with five elements. The type of the array includes its size, so `[5]int` and `[10]int` are different types.
+
+#### 14. What is a slice in Go?
+> **Answer:**
+> A slice in Go is a sequence of elements that is more flexible than an array, as its size can grow or shrink dynamically.
+
+> **Explanation:**
+> A slice is a reference to a segment of an array, allowing its length and capacity to be adjusted as needed. Slices are used more frequently than arrays in Go due to their flexibility. For example, `var slice []int` declares a slice of integers. Slices can be resized using functions like `append`.
+
+#### 15. What is the main difference between an array and a slice in Go?
+> **Answer:**
+> The main difference is that arrays have a fixed size, whereas slices have a dynamic size that can grow or shrink as needed.
+
+## ❗❗  Tricky Questions  ❗❗
 
 #### 1. What is the output of the following Go program and why?
 
@@ -224,3 +241,17 @@ func main() {
 
 > **Answer:**
 > A pointer receiver allows methods to modify the receiver's value and avoid copying it. It is used when the method needs to mutate the receiver or when the receiver is a large struct to avoid performance overhead of copying. A value receiver is used when the method does not need to modify the receiver, and copying is cheap.
+
+#### 9. What is an unbuffered channel in Go?
+> **Answer:**
+> An unbuffered channel is a type of channel that does not have any capacity to hold values. When a value is sent to an unbuffered channel, the sending goroutine is blocked until another goroutine receives the value from the channel. Similarly, a receiving goroutine is blocked until a value is sent to the channel.
+
+> **Explanation:**
+> Unbuffered channels enforce strict synchronization between sending and receiving goroutines. This means that the send and receive operations happen simultaneously, ensuring that both goroutines coordinate closely.
+
+#### 10. What is a buffered channel in Go?
+> **Answer:**
+> A buffered channel is a type of channel that has a capacity to hold a specific number of values. When a value is sent to a buffered channel, the sending goroutine is only blocked if the channel is full. Similarly, the receiving goroutine is only blocked if the channel is empty.
+
+> **Explanation:**
+> Buffered channels allow for asynchronous communication between goroutines. This means that a sender can send values to the channel without waiting for a receiver, up to the channel's capacity. Likewise, a receiver can receive values from the channel without waiting for a sender, as long as there are values in the buffer.
