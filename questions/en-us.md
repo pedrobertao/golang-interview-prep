@@ -271,5 +271,44 @@ func main() {
 > **Explanation:**
 > Buffered channels allow for asynchronous communication between goroutines. This means that a sender can send values to the channel without waiting for a receiver, up to the channel's capacity. Likewise, a receiver can receive values from the channel without waiting for a sender, as long as there are values in the buffer.
 
+#### 11. What are Generics and how are they used in Go?
 
+**Answer:**
+> Generics are a feature in programming languages that allow you to write flexible and reusable code, enabling functions, data structures, and types to operate with different data types without sacrificing type safety. In Go, they allow the creation of functions and types that can operate with any specified type.
 
+**Example:**
+```
+package main
+import "fmt"
+
+func Max[T any](values []T) T {
+    var max T
+    for _, v := range values {
+        if v > max {
+            max = v
+        }
+    }
+    return max
+}
+
+func main() {
+    ints := []int{1, 2, 3, 4, 5}
+    floats := []float64{1.1, 2.2, 3.3, 4.4, 5.5}
+
+    fmt.Println("Max int:", Max(ints))
+    fmt.Println("Max float:", Max(floats))
+}
+```
+
+**Explanation:**
+> `Max` is a generic function that can operate on slices of any type `T`.
+> The type parameter `T` is specified in square brackets `[]`.
+> The `any` constraint indicates that `T` can be of any type.
+
+#### 12. What are the main benefits of generics?
+
+**Answer:**
+> The main benefits of generics include:
+> - Reusability: They allow you to write more reusable code without duplicating it for each type.
+> - Type Safety: They ensure type correctness at compile time.
+> - Maintainability: They simplify maintenance by reducing code duplication.

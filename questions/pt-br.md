@@ -258,7 +258,7 @@ func main() {
 > **Resposta:**
 > Um receptor de ponteiro permite que métodos modifiquem o valor do receptor e evitem copiá-lo. É usado quando o método precisa mutar o receptor ou quando o receptor é uma struct grande para evitar sobrecarga de desempenho de copiar. Um receptor de valor é usado quando o método não precisa modificar o receptor, e copiar é barato.
 
-### 9. O que é um canal sem buffer em Go?
+#### 9. O que é um canal sem buffer em Go?
 
 > **Resposta:**
 > Um canal sem buffer é um tipo de canal que não tem capacidade para armazenar valores. Quando um valor é enviado para um canal sem buffer, a goroutine que envia é bloqueada até que outra goroutine receba o valor do canal. Da mesma forma, uma goroutine que recebe é bloqueada até que um valor seja enviado para o canal.
@@ -273,6 +273,43 @@ func main() {
 > **Explicação:**
 > Canais com buffer permitem comunicação assíncrona entre goroutines. Isso significa que um remetente pode enviar valores para o canal sem esperar por um receptor, até a capacidade do canal. Da mesma forma, um receptor pode receber valores do canal sem esperar por um remetente, desde que haja valores no buffer.
 
+#### 11. O que é e como são usados os Generics em Go?
 
+**Resposta:**
+> Generics são uma funcionalidade em linguagens de programação que permitem escrever código flexível e reutilizável, possibilitando que funções, estruturas de dados e tipos operem com diferentes tipos de dados sem sacrificar a segurança de tipos. No Go eles permitem a criação de funções e tipos que podem operar com qualquer tipo especificado.
 
+**Exemplo**
+```
+package main
+import "fmt"
+func Max[T any](values []T) T {
+    var max T
+    for _, v := range values {
+        if v > max {
+            max = v
+        }
+    }
+    return max
+}
 
+func main() {
+    ints := []int{1, 2, 3, 4, 5}
+    floats := []float64{1.1, 2.2, 3.3, 4.4, 5.5}
+
+    fmt.Println("Max int:", Max(ints))
+    fmt.Println("Max float:", Max(floats))
+}
+```
+
+**Explicação:**
+>`Max` é uma função genérica que pode operar em slices de qualquer tipo `T`.
+> O parâmetro de tipo `T` é especificado entre colchetes `[]`.
+> A restrição `any` indica que `T` pode ser de qualquer tipo.
+
+#### 12. Quais são os principais benefícios dos generics?
+
+**Resposta:**
+> Os principais benefícios dos generics incluem:
+> - Reusabilidade: Permitem escrever código mais reutilizável sem duplicar para cada tipo.
+> - Segurança de Tipos: Garantem a correção dos tipos em tempo de compilação.
+> - Manutenibilidade: Simplificam a manutenção ao reduzir a duplicação de código.
