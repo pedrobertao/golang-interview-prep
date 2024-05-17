@@ -1,4 +1,4 @@
-## 🤖 Perguntas gerais 🤖
+## 🤖 Perguntas genéricas 🤖
 
 #### 1. O que é Go? Explique suas principais características.
 
