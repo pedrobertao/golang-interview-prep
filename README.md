@@ -18,6 +18,11 @@ The guide will be separated into files based on the spoken language, such as Eng
 [pt_br.md](https://github.com/pedrobertao/golang-interview-prep/blob/main/questions/pt-br.md) or [en_us.md](https://github.com/pedrobertao/golang-interview-prep/blob/main/questions/en-us.md) \
 You will be able to find these text under the folder called questions.
 
+## Must check
+
+[Golang site](https://go.dev/) \
+[Effective go](https://go.dev/doc/effective_go)
+
 ## Feedback
 
 If you have any feedback, please let us know through the issues section.
@@ -29,10 +34,6 @@ Contributions are always welcome!
 See `contributing.md` to learn how to get started.
 
 Please follow the project's `code of conduct`.
-## Must check
-
-[Golang site](https://go.dev/) \
-[Effective go](https://go.dev/doc/effective_go)
 
 ## Authors
 
