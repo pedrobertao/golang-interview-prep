@@ -106,8 +106,8 @@ func main() {
 }
 ```
 
-> **Resposta:**
-> hello
+> **Resposta:** \
+> hello \
 > world
 
 > **Explicação:**
