@@ -155,7 +155,7 @@ func main() {
 
 #### 4. How does Go handle nil interfaces? What is a common pitfall associated with them?
 
-> **Answer:**:
+> **Answer:**
 > A nil interface in Go is an interface value that holds neither a value nor a type. A common pitfall is checking only the value for nil, not considering that an interface can be non-nil while holding a nil concrete value. This can lead to unexpected behavior when comparing interfaces for nil.
 
 #### 5. Describe the memory model of Go and its implications for concurrent programming.
