@@ -14,10 +14,10 @@ We will gather as much information as possible, but interviews can be biased tow
 
 ## Documentation
 
-The guide will be separeted in files based on the speking language like English, Portuguese and others. The struct of the files will be as follows i.e:\
-`pt_br.text` \
-`en_us.text` \
-You will be able to find these text under the folder called questions
+The guide will be separated into files based on the spoken language, such as English, Portuguese, and others. The structure of the files will be as follows: \
+[pt_br.md](https://github.com/pedrobertao/golang-interview-prep/blob/main/questions/pt-br.md) or [en_us.md](https://github.com/pedrobertao/golang-interview-prep/blob/main/questions/en-us.md) \
+You will be able to find these text under the folder called questions.
+
 ## Feedback
 
 If you have any feedback, please let us know through the issues section.
