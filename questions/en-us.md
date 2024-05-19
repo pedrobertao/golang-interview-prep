@@ -3,7 +3,7 @@
 #### 1. What is Go? Explain its main features.
 
 > **Answer:**
-> Go, also known as Golang, is an open-source programming language developed by Google. It is statically typed, compiled, and known for its simplicity, efficiency, and concurrency support. Key features include garbage collection, rich standard library, goroutines for concurrency, and built-in tools for code formatting and testing.
+> Go is an open source, strongly typed, compiled language written to build concurrent and scalable software. The language was invented at Google by Rob Pike, Ken Thomson, and Robert Griesemer. It is statically typed, compiled, and known for its simplicity, efficiency, and concurrency support. Key features include garbage collection, rich standard library, goroutines for concurrency, and built-in tools for code formatting and testing.
 
 #### 2. How do you declare a variable in Go?
 

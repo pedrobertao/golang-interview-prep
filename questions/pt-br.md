@@ -3,7 +3,7 @@
 #### 1. O que é Go? Explique suas principais características.
 
 > **Resposta:**
-> Go, também conhecido como Golang, é uma linguagem de programação de código aberto desenvolvida pelo Google. É uma linguagem compilada, de tipagem estática, conhecida por sua simplicidade, eficiência e suporte à concorrência. Principais características incluem coleta de lixo, biblioteca padrão rica, goroutines para concorrência e ferramentas integradas para formatação de código e testes.
+> Go é uma linguagem de código aberto, fortemente tipada e compilada, escrita para construir software concorrente e escalável. A linguagem foi inventada no Google por Rob Pike, Ken Thomson e Robert Griesemer. É estaticamente tipada, compilada e conhecida por sua simplicidade, eficiência e suporte à concorrência. Os principais recursos incluem coleta de lixo, uma biblioteca padrão rica, gorrotinas para concorrência e ferramentas integradas para formatação de código e testes.
 
 #### 2. Como você declara uma variável em Go?
 
