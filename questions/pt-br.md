@@ -1,5 +1,7 @@
 ## 🤖 Perguntas genéricas 🤖
 
+#### 🔎 Teste o código no [playground](https://go.dev/play/). 🔎
+
 #### 1. O que é Go? Explique suas principais características.
 
 > **Resposta:**

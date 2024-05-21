@@ -1,5 +1,7 @@
 ## 🤖 General questions 🤖
 
+#### 🔎 Test the code in the [playground](https://go.dev/play/). 🔎
+
 #### 1. What is Go? Explain its main features.
 
 > **Answer:**
@@ -10,7 +12,7 @@
 > **Answer:**
 > You can declare a variable using the var keyword or the short declaration operator :=. For example:
 
-```
+```go
 var x int
 x = 10 // or
 y := 20
@@ -36,7 +38,7 @@ y := 20
 > **Answer:**
 > An interface in Go is a type that specifies a set of method signatures. A type implements an interface by implementing its methods. Interfaces are used to define behavior and achieve polymorphism. For example:
 
-```
+```go
 type Reader interface {
     Read(p []byte) (n int, err error)
 }
@@ -161,7 +163,7 @@ func main() {
 
 #### 1. What is the output of the following Go program and why?
 
-```
+```go
 import "fmt"
 package main
 func main() {
@@ -179,7 +181,7 @@ func main() {
 
 ### 2. How do you prevent a data race in the following Go code?
 
-```
+```go
 package main
 import (
     "fmt"
@@ -198,7 +200,7 @@ func main() {
 > **Answer:**
 > To prevent a data race, you can use a synchronization primitive like a mutex or a channel. Here’s one way using a mutex:
 
-```
+```go
 package main
 import (
     "fmt"
@@ -222,7 +224,7 @@ func main() {
 
 #### 3. What will be the output of the following program? Explain why.
 
-```
+```go
 package main
 import "fmt"
 func main() {
@@ -252,7 +254,7 @@ func main() {
 > **Answer:**:
 > A worker pool can be implemented using goroutines and channels. Here’s an example:
 
-```
+```go
 package main
 import (
     "fmt"
@@ -335,7 +337,7 @@ func main() {
 
 **Example:**
 
-```
+```go
 package main
 import "fmt"
 
