@@ -59,7 +59,7 @@ type Reader interface {
 
 #### 10. Quais são as melhores práticas para escrever programas concorrentes em Go?
 
-> **Resposta:** > _As melhores práticas incluem:_
+> **Resposta:**
 >
 > - Evitar compartilhamento de memória comunicando-se através de canais.
 > - Usar goroutines de maneira eficiente e evitar criar muitas.
@@ -120,6 +120,40 @@ type Reader interface {
 **Resposta:**
 
 > O pacote context é usado para gerenciar prazos, sinais de cancelamento e outros valores escopados a pedidos em limites de API e entre processos. Ele é normalmente usado para controlar e gerenciar o ciclo de vida de uma solicitação, permitindo desligamentos suaves, tempos limite e propagação de sinais de cancelamento. O contexto é geralmente passado como o primeiro parâmetro para funções que executam operações de longa duração, garantindo que possam ser terminadas, se necessário.
+
+#### 19. O que é uma `Struct` em Go?
+
+> Em Go, uma `struct` é um tipo de dado composto que agrupa variáveis sob um único nome. Essas variáveis, conhecidas como campos, podem ter diferentes tipos e são acessadas usando notação de ponto. Structs são usadas para criar estruturas de dados complexas e são centrais para a programação orientada a objetos em Go.
+> Aqui está um exemplo básico:
+
+```go
+package main
+import "fmt"
+// Define uma struct chamada Person
+type Person struct {
+    Name  string
+    Age   int
+    Email string
+}
+func main() {
+    // Cria uma instância da struct Person
+    p := Person{
+        Name:  "Alice",
+        Age:   30,
+        Email: "alice@example.com",
+    }
+    // Acessa os campos da struct
+    fmt.Println("Name:", p.Name)
+    fmt.Println("Age:", p.Age)
+    fmt.Println("Email:", p.Email)
+}
+```
+
+> **Explicação:**
+>
+> - `Person` é um tipo de struct com três campos: `Name` (string), `Age` (int) e `Email` (string).
+> - Uma instância de `Person` é criada e inicializada com valores para cada campo.
+> - Os campos são acessados usando a notação de ponto, por exemplo, `p.Name`.
 
 ## ❗❗ Perguntas difíceis ❗❗
 
@@ -196,7 +230,7 @@ func main() {
 }
 ```
 
-> **Resposta:** > [0 0 0 0 0 1 2 3]
+> **Resposta:** [0 0 0 0 0 1 2 3]
 
 > **Explicação:**
 > O slice s é inicialmente criado com um comprimento de 5, contendo cinco zeros. Quando append é chamado, ele adiciona três elementos ao slice, resultando em um comprimento total de 8.
@@ -299,7 +333,7 @@ func main() {
 
 **Exemplo**
 
-```
+```go
 package main
 import "fmt"
 func Max[T any](values []T) T {
@@ -321,7 +355,7 @@ func main() {
 }
 ```
 
-**Explicação:**
+> **Explicação:**
 
 > `Max` é uma função genérica que pode operar em slices de qualquer tipo `T`.
 > O parâmetro de tipo `T` é especificado entre colchetes `[]`.
@@ -329,10 +363,76 @@ func main() {
 
 #### 12. Quais são os principais benefícios dos generics?
 
-**Resposta:**
+> **Resposta:**
 
 > Os principais benefícios dos generics incluem:
 >
 > - Reusabilidade: Permitem escrever código mais reutilizável sem duplicar para cada tipo.
 > - Segurança de Tipos: Garantem a correção dos tipos em tempo de compilação.
 > - Manutenibilidade: Simplificam a manutenção ao reduzir a duplicação de código.
+
+#### 13. O que são `Métodos` em Go?
+
+> **Resposta:**
+
+> Em Go, métodos são funções associadas a um tipo específico, permitindo definir comportamentos para seus tipos personalizados (structs). Métodos utilizam um argumento de receptor especial que aparece entre a palavra-chave `func` e o nome do método.
+> Aqui está um exemplo:
+
+```go
+package main
+import "fmt"
+// Define uma struct chamada Person
+type Person struct {
+    Name string
+    Age  int
+}
+// Define um método na struct Person
+func (p Person) Greet() {
+    fmt.Printf("Hello, my name is %s and I am %d years old.\n", p.Name, p.Age)
+}
+func main() {
+    // Cria uma instância da struct Person
+    p := Person{
+        Name: "Alice",
+        Age:  30,
+    }
+    // Chama o método Greet na instância Person
+    p.Greet()
+}
+```
+
+> **Explicação:**
+
+> - `Person` é um tipo de struct com campos `Name` e `Age`.
+> - `Greet` é um método com um receptor do tipo `Person`. O receptor `(p Person)` permite que `Greet` acesse os campos da struct `Person`.
+> - O método é chamado usando a notação de ponto, por exemplo, `p.Greet()`.
+>   Métodos em Go podem ter receptores de valor ou de ponteiro:
+>
+> 1. **_Receptores de Valor_**: O método opera em uma cópia do receptor. Mudanças feitas no receptor dentro do método não afetam o valor original. Isso é usado quando o método não precisa modificar o receptor ou quando o receptor é pequeno e barato de copiar.
+> 2. **_Receptores de Ponteiro_**: O método opera no receptor original. Mudanças feitas no receptor dentro do método afetam o valor original. Isso é usado quando o método precisa modificar o receptor ou quando o receptor é grande e copiá-lo seria ineficiente.
+>    Exemplo com um receptor de ponteiro:
+
+```go
+package main
+import "fmt"
+// Define uma struct chamada Person
+type Person struct {
+    Name string
+    Age  int
+}
+// Define um método com um receptor de ponteiro
+func (p *Person) HaveBirthday() {
+    p.Age++
+}
+func main() {
+    p := Person{
+        Name: "Alice",
+        Age:  30,
+    }
+    // Chama o método HaveBirthday na instância Person
+    p.HaveBirthday()
+    fmt.Println("After birthday, Age:", p.Age)  // Outputs: After birthday, Age: 31
+}
+```
+
+> Neste exemplo, `HaveBirthday` usa um receptor de ponteiro `(p *Person)`, permitindo que ele modifique o campo `Age` da struct `Person`.

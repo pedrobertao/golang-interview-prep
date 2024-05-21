@@ -59,7 +59,7 @@ type Reader interface {
 
 #### 10. What are the best practices for writing concurrent programs in Go?
 
-> **Answer:** > _Best practices include:_
+> **Answer:**
 >
 > - Avoid sharing memory by communicating through channels.
 > - Use goroutines efficiently and avoid creating too many.
@@ -120,6 +120,42 @@ type Reader interface {
 **Answer:**
 
 > The context package is used for managing deadlines, cancelation signals, and other request-scoped values across API boundaries and between processes. It is typically used to control and manage the lifecycle of a request, allowing for graceful shutdowns, timeouts, and propagation of cancelation signals. Context is commonly passed as the first parameter to functions that perform long-running operations, ensuring they can be terminated if needed.
+
+#### 19. What is a `Struct` in Go ?
+
+**Answer:**
+
+> In Go, a `struct` is a composite data type that groups together variables under a single name. These variables, known as fields, can have different types and are accessed using dot notation. Structs are used to create complex data structures and are central to object-oriented programming in Go.
+> Here's a basic example:
+
+```go
+package main
+import "fmt"
+// Define a struct type named Person
+type Person struct {
+    Name string
+    Age  int
+    Email string
+}
+func main() {
+    // Create an instance of the Person struct
+    p := Person{
+        Name:  "Alice",
+        Age:   30,
+        Email: "alice@example.com",
+    }
+    // Access fields of the struct
+    fmt.Println("Name:", p.Name)
+    fmt.Println("Age:", p.Age)
+    fmt.Println("Email:", p.Email)
+}
+```
+
+> **Explanation:**
+>
+> - `Person` is a struct type with three fields: `Name` (string), `Age` (int), and `Email` (string).
+> - An instance of `Person` is created and initialized with values for each field.
+> - Fields are accessed using the dot notation, e.g., `p.Name`.
 
 ## ❗❗ Tricky Questions ❗❗
 
@@ -196,7 +232,7 @@ func main() {
 }
 ```
 
-> **Answer:** > [0 0 0 0 0 1 2 3]
+> **Answer:** [0 0 0 0 0 1 2 3]
 
 > **Explanation:**
 > The slice s is initially created with a length of 5, containing five zeroes. When append is called, it adds three more elements to the slice, resulting in a total length of 8.
@@ -256,7 +292,7 @@ func main() {
 
 #### 7. What are some common performance pitfalls in Go, and how can you avoid them?
 
-> **Answer:** > _Common performance pitfalls include:_
+> **Answer:** _Common performance pitfalls include:_
 >
 > - Excessive use of goroutines leading to high memory consumption.
 > - Inefficient use of channels causing unnecessary blocking.
@@ -337,3 +373,71 @@ func main() {
 > - Reusability: They allow you to write more reusable code without duplicating it for each type.
 > - Type Safety: They ensure type correctness at compile time.
 > - Maintainability: They simplify maintenance by reducing code duplication.
+
+#### What are `Methods` in Go?
+
+**Answer:**
+
+> In Go, methods are functions associated with a specific type, allowing you to define behavior for your custom types (structs). Methods use a special receiver argument that appears between the `func` keyword and the method name.
+> Here's an example:
+
+```go
+package main
+import "fmt"
+// Define a struct type named Person
+type Person struct {
+    Name string
+    Age  int
+}
+// Define a method on the Person struct
+func (p Person) Greet() {
+    fmt.Printf("Hello, my name is %s and I am %d years old.\n", p.Name, p.Age)
+}
+func main() {
+    // Create an instance of the Person struct
+    p := Person{
+        Name: "Alice",
+        Age:  30,
+    }
+    // Call the Greet method on the Person instance
+    p.Greet()
+}
+```
+
+#### 13. What are `Methods` in Go?
+
+**Explanation:**
+
+> - `Person` is a struct type with fields `Name` and `Age`.
+> - `Greet` is a method with a receiver of type `Person`. The receiver `(p Person)` allows `Greet` to access the fields of the `Person` struct.
+> - The method is called using the dot notation, e.g., `p.Greet()`.
+>   Methods in Go can have either value receivers or pointer receivers:
+>
+> 1. **_Value Receivers_**: The method operates on a copy of the receiver. Changes made to the receiver inside the method do not affect the original value. This is used when the method does not need to modify the receiver or when the receiver is small and inexpensive to copy.
+> 2. **_Pointer Receivers_**: The method operates on the original receiver. Changes made to the receiver inside the method affect the original value. This is used when the method needs to modify the receiver or when the receiver is large and copying it would be inefficient.
+>    Example with a pointer receiver:
+
+```go
+package main
+import "fmt"
+// Define a struct type named Person
+type Person struct {
+    Name string
+    Age  int
+}
+// Define a method with a pointer receiver
+func (p *Person) HaveBirthday() {
+    p.Age++
+}
+func main() {
+    p := Person{
+        Name: "Alice",
+        Age:  30,
+    }
+    // Call the HaveBirthday method on the Person instance
+    p.HaveBirthday()
+    fmt.Println("After birthday, Age:", p.Age)  // Outputs: After birthday, Age: 31
+}
+```
+
+> In this example, `HaveBirthday` uses a pointer receiver `(p *Person)`, allowing it to modify the `Age` field of the `Person` struct.
