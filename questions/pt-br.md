@@ -35,6 +35,7 @@ y := 20
 
 > **Resposta:**
 > Uma interface em Go é um tipo que especifica um conjunto de assinaturas de métodos. Um tipo implementa uma interface implementando seus métodos. Interfaces são usadas para definir comportamento e alcançar polimorfismo. Por exemplo:
+
 ```
 type Reader interface {
     Read(p []byte) (n int, err error)
@@ -58,8 +59,8 @@ type Reader interface {
 
 #### 10. Quais são as melhores práticas para escrever programas concorrentes em Go?
 
-> **Resposta:**
-> *As melhores práticas incluem:*
+> **Resposta:** > _As melhores práticas incluem:_
+>
 > - Evitar compartilhamento de memória comunicando-se através de canais.
 > - Usar goroutines de maneira eficiente e evitar criar muitas.
 > - Lidar adequadamente com a sincronização usando canais, mutexes e outros primitivos de sincronização.
@@ -76,6 +77,7 @@ type Reader interface {
 > A instrução select permite que uma goroutine espere em múltiplas operações de comunicação. Ela bloqueia até que um de seus casos possa prosseguir, então executa esse caso. É usada para lidar com múltiplos canais e evitar bloqueio em um único canal.
 
 #### 13. O que é um array em Go?
+
 > **Resposta:**
 > Um array em Go é uma coleção de elementos do mesmo tipo, com um tamanho fixo definido no momento da declaração.
 
@@ -83,6 +85,7 @@ type Reader interface {
 > Os arrays têm um tamanho fixo, o que significa que o número de elementos é especificado quando o array é declarado e não pode ser alterado. Por exemplo, var arr [5]int declara um array de inteiros com cinco elementos. O tipo do array inclui seu tamanho, então [5]int e [10]int são tipos diferentes.
 
 #### 14. O que é um slice em Go?
+
 > **Resposta:**
 > Um slice em Go é uma sequência de elementos que é mais flexível que um array, pois seu tamanho pode crescer ou diminuir dinamicamente.
 
@@ -90,28 +93,38 @@ type Reader interface {
 > Um slice é uma referência a um segmento de um array, permitindo que seu comprimento e capacidade sejam ajustados conforme necessário. Slices são usados com mais frequência do que arrays em Go devido à sua flexibilidade. Por exemplo, var slice []int declara um slice de inteiros. Slices podem ser redimensionados usando funções como append.
 
 #### 15. Qual é a principal diferença entre um array e um slice em Go?
+
 > **Resposta:**
 > A principal diferença é que arrays têm um tamanho fixo, enquanto slices têm um tamanho dinâmico que pode crescer ou diminuir conforme necessário.
 
 #### 16. O que é `go vet` em Go?
 
 **Resposta:**
->`go vet` é uma ferramenta que analisa o código-fonte em Go para detectar construções suspeitas ou erros comuns que não são detectados pelo compilador.
-> Ao executar `go vet`, você pode identificar e corrigir esses problemas antes de compilar o código, ajudando a evitar bugs e comportamentos inesperados.
 
+> `go vet` é uma ferramenta que analisa o código-fonte em Go para detectar construções suspeitas ou erros comuns que não são detectados pelo compilador.
+> Ao executar `go vet`, você pode identificar e corrigir esses problemas antes de compilar o código, ajudando a evitar bugs e comportamentos inesperados.
 
 #### 17. O que é `go fmt` em Go?
 
 **Resposta:**
+
 > `go fmt` reformata o código para seguir as convenções de formatação do Go, tornando o código mais legível e consistente. Isso inclui:
+>
 > - Indentação correta.
 > - Espaçamento adequado.
 > - Quebra de linhas longas.
-> Usar `go fmt` ajuda a manter um estilo de código uniforme em projetos, facilitando a leitura e manutenção do código por diferentes desenvolvedores.
+>   Usar `go fmt` ajuda a manter um estilo de código uniforme em projetos, facilitando a leitura e manutenção do código por diferentes desenvolvedores.
+
+#### 18. O que é o pacote `Context` em Go?
+
+**Resposta:**
+
+> O pacote context é usado para gerenciar prazos, sinais de cancelamento e outros valores escopados a pedidos em limites de API e entre processos. Ele é normalmente usado para controlar e gerenciar o ciclo de vida de uma solicitação, permitindo desligamentos suaves, tempos limite e propagação de sinais de cancelamento. O contexto é geralmente passado como o primeiro parâmetro para funções que executam operações de longa duração, garantindo que possam ser terminadas, se necessário.
 
 ## ❗❗ Perguntas difíceis ❗❗
 
 #### 1. Qual é a saída do seguinte programa Go e por quê?
+
 ```
 import "fmt"
 package main
@@ -129,6 +142,7 @@ func main() {
 > A instrução defer adia a execução de fmt.Println("world") até que a função circundante (main) retorne, então "hello" é impresso primeiro, seguido por "world".
 
 #### 2. Como você previne uma condição de corrida no seguinte código Go?
+
 ```
 package main
 import (
@@ -147,6 +161,7 @@ func main() {
 
 > **Resposta:**
 > Para prevenir uma condição de corrida, você pode usar um primitivo de sincronização como um mutex ou um canal. Aqui está uma maneira usando um mutex:
+
 ```
 package main
 import (
@@ -170,6 +185,7 @@ func main() {
 ```
 
 #### 3. Qual será a saída do seguinte programa? Explique por quê.
+
 ```
 package main
 import "fmt"
@@ -180,8 +196,7 @@ func main() {
 }
 ```
 
-> **Resposta:**
-> [0 0 0 0 0 1 2 3]
+> **Resposta:** > [0 0 0 0 0 1 2 3]
 
 > **Explicação:**
 > O slice s é inicialmente criado com um comprimento de 5, contendo cinco zeros. Quando append é chamado, ele adiciona três elementos ao slice, resultando em um comprimento total de 8.
@@ -200,6 +215,7 @@ func main() {
 
 > **Resposta:**
 > Um pool de trabalhadores pode ser implementado usando goroutines e canais. Aqui está um exemplo:
+
 ```
 package main
 import (
@@ -240,14 +256,15 @@ func main() {
 
 #### 7. Quais são alguns erros comuns de desempenho em Go e como evitá-los?
 
-> **Resposta:**
-> *Erros comuns de desempenho incluem:*
+> **Resposta:** > _Erros comuns de desempenho incluem:_
+>
 > - Uso excessivo de goroutines levando a alto consumo de memória.
 > - Uso ineficiente de canais causando bloqueios desnecessários.
 > - Grandes alocações de memória e pausas frequentes do coletor de lixo.
 > - Uso subótimo das funções da biblioteca padrão.
 
-> *Estes podem ser evitados:*
+> _Estes podem ser evitados:_
+>
 > - Limitando o número de goroutines.
 > - Usando canais bufferizados adequadamente.
 > - Perfilando a aplicação para identificar e otimizar pontos críticos.
@@ -267,6 +284,7 @@ func main() {
 > Canais sem buffer impõem uma sincronização estrita entre as goroutines de envio e recebimento. Isso significa que as operações de envio e recebimento acontecem simultaneamente, garantindo que ambas as goroutines coordenem de perto.
 
 #### 10. O que é um canal com buffer em Go?
+
 > **Resposta:**
 > Um canal com buffer é um tipo de canal que tem capacidade para armazenar um número específico de valores. Quando um valor é enviado para um canal com buffer, a goroutine que envia só é bloqueada se o canal estiver cheio. Da mesma forma, a goroutine que recebe só é bloqueada se o canal estiver vazio.
 
@@ -276,9 +294,11 @@ func main() {
 #### 11. O que é e como são usados os Generics em Go?
 
 **Resposta:**
+
 > Generics são uma funcionalidade em linguagens de programação que permitem escrever código flexível e reutilizável, possibilitando que funções, estruturas de dados e tipos operem com diferentes tipos de dados sem sacrificar a segurança de tipos. No Go eles permitem a criação de funções e tipos que podem operar com qualquer tipo especificado.
 
 **Exemplo**
+
 ```
 package main
 import "fmt"
@@ -302,14 +322,17 @@ func main() {
 ```
 
 **Explicação:**
->`Max` é uma função genérica que pode operar em slices de qualquer tipo `T`.
+
+> `Max` é uma função genérica que pode operar em slices de qualquer tipo `T`.
 > O parâmetro de tipo `T` é especificado entre colchetes `[]`.
 > A restrição `any` indica que `T` pode ser de qualquer tipo.
 
 #### 12. Quais são os principais benefícios dos generics?
 
 **Resposta:**
+
 > Os principais benefícios dos generics incluem:
+>
 > - Reusabilidade: Permitem escrever código mais reutilizável sem duplicar para cada tipo.
 > - Segurança de Tipos: Garantem a correção dos tipos em tempo de compilação.
 > - Manutenibilidade: Simplificam a manutenção ao reduzir a duplicação de código.

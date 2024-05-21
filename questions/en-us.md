@@ -1,4 +1,4 @@
-## 🤖  General questions 🤖
+## 🤖 General questions 🤖
 
 #### 1. What is Go? Explain its main features.
 
@@ -9,6 +9,7 @@
 
 > **Answer:**
 > You can declare a variable using the var keyword or the short declaration operator :=. For example:
+
 ```
 var x int
 x = 10 // or
@@ -34,6 +35,7 @@ y := 20
 
 > **Answer:**
 > An interface in Go is a type that specifies a set of method signatures. A type implements an interface by implementing its methods. Interfaces are used to define behavior and achieve polymorphism. For example:
+
 ```
 type Reader interface {
     Read(p []byte) (n int, err error)
@@ -57,8 +59,8 @@ type Reader interface {
 
 #### 10. What are the best practices for writing concurrent programs in Go?
 
-> **Answer:**
-> *Best practices include:*
+> **Answer:** > _Best practices include:_
+>
 > - Avoid sharing memory by communicating through channels.
 > - Use goroutines efficiently and avoid creating too many.
 > - Properly handle synchronization using channels, mutexes, and other synchronization primitives.
@@ -75,6 +77,7 @@ type Reader interface {
 > The select statement allows a goroutine to wait on multiple communication operations. It blocks until one of its cases can proceed, then executes that case. It is used to handle multiple channels and avoid blocking on a single channel.
 
 #### 13. What is an array in Go?
+
 > **Answer:**
 > An array in Go is a collection of elements of the same type, with a fixed size defined at the time of declaration.
 
@@ -82,6 +85,7 @@ type Reader interface {
 > Arrays have a fixed size, which means the number of elements is specified when the array is declared and cannot be changed. For example, `var arr [5]int` declares an array of integers with five elements. The type of the array includes its size, so `[5]int` and `[10]int` are different types.
 
 #### 14. What is a slice in Go?
+
 > **Answer:**
 > A slice in Go is a sequence of elements that is more flexible than an array, as its size can grow or shrink dynamically.
 
@@ -89,28 +93,38 @@ type Reader interface {
 > A slice is a reference to a segment of an array, allowing its length and capacity to be adjusted as needed. Slices are used more frequently than arrays in Go due to their flexibility. For example, `var slice []int` declares a slice of integers. Slices can be resized using functions like `append`.
 
 #### 15. What is the main difference between an array and a slice in Go?
+
 > **Answer:**
 > The main difference is that arrays have a fixed size, whereas slices have a dynamic size that can grow or shrink as needed.
 
 #### 16. What is `go vet` in Go?
 
 **Answer:**
->`go vet` is a tool that inspects Go source code to detect suspicious constructs or common errors that the compiler does not catch.
-> By running `go vet`, you can identify and fix these issues before compiling the code, helping to avoid bugs and unexpected behavior.
 
+> `go vet` is a tool that inspects Go source code to detect suspicious constructs or common errors that the compiler does not catch.
+> By running `go vet`, you can identify and fix these issues before compiling the code, helping to avoid bugs and unexpected behavior.
 
 #### 17. What is `go fmt` in Go?
 
 **Answer:**
+
 > `go fmt` reformats the code to follow Go's formatting conventions, making the code more readable and consistent. This includes:
+>
 > - Correct indentation.
 > - Proper spacing.
 > - Breaking long lines.
-> Using `go fmt` helps maintain a uniform coding style in projects, making the code easier to read and maintain by different developers.
+>   Using `go fmt` helps maintain a uniform coding style in projects, making the code easier to read and maintain by different developers.
 
-## ❗❗  Tricky Questions  ❗❗
+#### 18. What is `Context` package in Go?
+
+**Answer:**
+
+> The context package is used for managing deadlines, cancelation signals, and other request-scoped values across API boundaries and between processes. It is typically used to control and manage the lifecycle of a request, allowing for graceful shutdowns, timeouts, and propagation of cancelation signals. Context is commonly passed as the first parameter to functions that perform long-running operations, ensuring they can be terminated if needed.
+
+## ❗❗ Tricky Questions ❗❗
 
 #### 1. What is the output of the following Go program and why?
+
 ```
 import "fmt"
 package main
@@ -128,6 +142,7 @@ func main() {
 > The defer statement defers the execution of fmt.Println("world") until the surrounding function (main) returns, so "hello" is printed first, followed by "world".
 
 ### 2. How do you prevent a data race in the following Go code?
+
 ```
 package main
 import (
@@ -146,6 +161,7 @@ func main() {
 
 > **Answer:**
 > To prevent a data race, you can use a synchronization primitive like a mutex or a channel. Here’s one way using a mutex:
+
 ```
 package main
 import (
@@ -169,6 +185,7 @@ func main() {
 ```
 
 #### 3. What will be the output of the following program? Explain why.
+
 ```
 package main
 import "fmt"
@@ -179,8 +196,7 @@ func main() {
 }
 ```
 
-> **Answer:**
-> [0 0 0 0 0 1 2 3]
+> **Answer:** > [0 0 0 0 0 1 2 3]
 
 > **Explanation:**
 > The slice s is initially created with a length of 5, containing five zeroes. When append is called, it adds three more elements to the slice, resulting in a total length of 8.
@@ -199,6 +215,7 @@ func main() {
 
 > **Answer:**:
 > A worker pool can be implemented using goroutines and channels. Here’s an example:
+
 ```
 package main
 import (
@@ -239,14 +256,15 @@ func main() {
 
 #### 7. What are some common performance pitfalls in Go, and how can you avoid them?
 
-> **Answer:**
-> *Common performance pitfalls include:*
+> **Answer:** > _Common performance pitfalls include:_
+>
 > - Excessive use of goroutines leading to high memory consumption.
 > - Inefficient use of channels causing unnecessary blocking.
 > - Large memory allocations and frequent garbage collection pauses.
 > - Suboptimal use of the standard library functions.
 
-> *These can be avoided by:*
+> _These can be avoided by:_
+>
 > - Limiting the number of goroutines.
 > - Using buffered channels appropriately.
 > - Profiling the application to identify and optimize hot spots.
@@ -258,6 +276,7 @@ func main() {
 > A pointer receiver allows methods to modify the receiver's value and avoid copying it. It is used when the method needs to mutate the receiver or when the receiver is a large struct to avoid performance overhead of copying. A value receiver is used when the method does not need to modify the receiver, and copying is cheap.
 
 #### 9. What is an unbuffered channel in Go?
+
 > **Answer:**
 > An unbuffered channel is a type of channel that does not have any capacity to hold values. When a value is sent to an unbuffered channel, the sending goroutine is blocked until another goroutine receives the value from the channel. Similarly, a receiving goroutine is blocked until a value is sent to the channel.
 
@@ -265,6 +284,7 @@ func main() {
 > Unbuffered channels enforce strict synchronization between sending and receiving goroutines. This means that the send and receive operations happen simultaneously, ensuring that both goroutines coordinate closely.
 
 #### 10. What is a buffered channel in Go?
+
 > **Answer:**
 > A buffered channel is a type of channel that has a capacity to hold a specific number of values. When a value is sent to a buffered channel, the sending goroutine is only blocked if the channel is full. Similarly, the receiving goroutine is only blocked if the channel is empty.
 
@@ -274,9 +294,11 @@ func main() {
 #### 11. What are Generics and how are they used in Go?
 
 **Answer:**
+
 > Generics are a feature in programming languages that allow you to write flexible and reusable code, enabling functions, data structures, and types to operate with different data types without sacrificing type safety. In Go, they allow the creation of functions and types that can operate with any specified type.
 
 **Example:**
+
 ```
 package main
 import "fmt"
@@ -301,6 +323,7 @@ func main() {
 ```
 
 **Explanation:**
+
 > `Max` is a generic function that can operate on slices of any type `T`.
 > The type parameter `T` is specified in square brackets `[]`.
 > The `any` constraint indicates that `T` can be of any type.
@@ -308,7 +331,9 @@ func main() {
 #### 12. What are the main benefits of generics?
 
 **Answer:**
+
 > The main benefits of generics include:
+>
 > - Reusability: They allow you to write more reusable code without duplicating it for each type.
 > - Type Safety: They ensure type correctness at compile time.
 > - Maintainability: They simplify maintenance by reducing code duplication.
