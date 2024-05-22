@@ -21,7 +21,8 @@ You will be able to find these text under the folder called questions.
 ## Must check
 
 [Golang site](https://go.dev/) \
-[Effective go](https://go.dev/doc/effective_go)
+[Effective go](https://go.dev/doc/effective_go) \
+[Golang Playground](https://go.dev/play/)
 
 ## Feedback
 
