@@ -28,6 +28,24 @@ y := 20
 > **Answer:**
 > The defer statement is used to ensure that a function call is performed later in a program’s execution, usually for purposes of cleanup. Deferred functions are executed in LIFO (Last In, First Out) order just before the surrounding function returns.
 
+> Here's a basic example:
+
+```go
+// Provided by Peter
+package main
+import "fmt"
+func main() {
+	f := foo()
+	fmt.Println(f)
+}
+func foo() (r string) {
+	defer func() {
+		r = r + "after"
+	}()
+	return "before "
+}
+```
+
 #### 5. Explain how Go handles errors.
 
 > **Answer:**

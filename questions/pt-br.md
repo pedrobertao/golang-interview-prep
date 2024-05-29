@@ -28,6 +28,23 @@ y := 20
 > **Resposta:**
 > A instrução defer é usada para garantir que uma chamada de função seja executada mais tarde na execução do programa, geralmente para fins de limpeza. Funções adiadas são executadas em ordem LIFO (Last In, First Out) logo antes da função circundante retornar.
 
+> Aqui está um exemplo básico:
+
+```go
+package main
+import "fmt"
+func main() {
+	f := foo()
+	fmt.Println(f)
+}
+func foo() (r string) {
+	defer func() {
+		r = r + "after"
+	}()
+	return "before "
+}
+```
+
 #### 5. Explique como Go lida com erros.
 
 > **Resposta:**
