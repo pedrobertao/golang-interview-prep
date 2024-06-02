@@ -455,3 +455,27 @@ func main() {
 ```
 
 > Neste exemplo, `HaveBirthday` usa um receptor de ponteiro `(p *Person)`, permitindo que ele modifique o campo `Age` da struct `Person`.
+
+#### 14. Explique os usos do pacote `sync/atomic`.
+
+> O pacote `atomic` fornece operações de memória atômica de baixo nível, que são cruciais para a implementação de algoritmos de sincronização. No entanto, essas funções devem ser usadas com extremo cuidado. Na maioria dos casos, é melhor usar canais ou outras ferramentas de sincronização fornecidas pelo pacote `sync`. O princípio a ser seguido é: compartilhe memória comunicando; não comunique compartilhando memória.
+> Aqui está um exemplo:
+
+```go
+package main
+import (
+	"fmt"
+	"sync/atomic"
+	"time"
+)
+func main() {
+	var x atomic.Int32
+	x.Store(1)
+	go func() {
+		x.Add(1)
+	}()
+	time.Sleep(1 * time.Second)
+	fmt.Println(x.Load())
+    // 2
+}
+```

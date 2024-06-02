@@ -461,3 +461,28 @@ func main() {
 ```
 
 > In this example, `HaveBirthday` uses a pointer receiver `(p *Person)`, allowing it to modify the `Age` field of the `Person` struct.
+
+#### 14. Explain the `sync/atomic` package uses.
+
+> Package atomic provides low-level atomic memory primitives useful for implementing synchronization algorithms.
+> These functions require great care to be used correctly. Except for special, low-level applications, synchronization is better done with channels or the facilities of the sync package. Share memory by communicating; don't communicate by sharing memory.
+> Here's an example:
+
+```go
+package main
+import (
+	"fmt"
+	"sync/atomic"
+	"time"
+)
+func main() {
+	var x atomic.Int32
+	x.Store(1)
+	go func() {
+		x.Add(1)
+	}()
+	time.Sleep(1 * time.Second)
+	fmt.Println(x.Load())
+    // 2
+}
+```
