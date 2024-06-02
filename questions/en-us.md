@@ -49,7 +49,7 @@ func foo() (r string) {
 #### 5. Explain how Go handles errors.
 
 > **Answer:**
-> Go handles errors using a simple, explicit error type. Functions that can result in an error return an additional error value. Error handling is done by checking this returned value. The standard library provides the errors package to create and manipulate errors.
+> Go handles errors using a simple, explicit error type. Functions that can result in an error return an additional error value. Error handling is done by checking this returned value. The standard library provides the errors package to create and manipulate errors. It also worth mentioning that [errors are treated as values.](https://go.dev/blog/errors-are-values)
 
 #### 6. What is a Go interface and how is it used?
 

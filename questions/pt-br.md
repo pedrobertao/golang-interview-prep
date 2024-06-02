@@ -48,7 +48,7 @@ func foo() (r string) {
 #### 5. Explique como Go lida com erros.
 
 > **Resposta:**
-> Go lida com erros usando um tipo de erro simples e explícito. Funções que podem resultar em um erro retornam um valor de erro adicional. O tratamento de erros é feito verificando esse valor retornado. A biblioteca padrão fornece o pacote errors para criar e manipular erros.
+> Go lida com erros usando um tipo de erro simples e explícito. Funções que podem resultar em um erro retornam um valor de erro adicional. O tratamento de erros é feito verificando esse valor retornado. A biblioteca padrão fornece o pacote errors para criar e manipular erros. Importante ressaltar que [erros são tratados como valores.](https://go.dev/blog/errors-are-values)
 
 #### 6. O que é uma interface em Go e como é usada?
 
