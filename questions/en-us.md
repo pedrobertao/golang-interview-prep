@@ -399,8 +399,8 @@ func main() {
 **Explanation:**
 
 > - `Person` is a struct type with fields `Name` and `Age`.
-> - `Greet` is a method with a receiver of type `Person`. The receiver `(p Person)` allows `Greet` to access the fields of the `Person` struct.
-> - The method is called using the dot notation, e.g., `p.Greet()`.
+> - `HaveBirthday` is a method with a receiver of type `Person`. The receiver `(p Person)` allows `HaveBirthday` to access the fields of the `Person` struct.
+> - The method is called using the dot notation, e.g., `p.HaveBirthday()`.
 >   Methods in Go can have either value receivers or pointer receivers:
 >
 > 1. **_Value Receivers_**: The method operates on a copy of the receiver. Changes made to the receiver inside the method do not affect the original value. This is used when the method does not need to modify the receiver or when the receiver is small and inexpensive to copy.
