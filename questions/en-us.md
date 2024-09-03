@@ -394,36 +394,6 @@ func main() {
 > - Type Safety: They ensure type correctness at compile time.
 > - Maintainability: They simplify maintenance by reducing code duplication.
 
-#### What are `Methods` in Go?
-
-**Answer:**
-
-> In Go, methods are functions associated with a specific type, allowing you to define behavior for your custom types (structs). Methods use a special receiver argument that appears between the `func` keyword and the method name.
-> Here's an example:
-
-```go
-package main
-import "fmt"
-// Define a struct type named Person
-type Person struct {
-    Name string
-    Age  int
-}
-// Define a method on the Person struct
-func (p Person) Greet() {
-    fmt.Printf("Hello, my name is %s and I am %d years old.\n", p.Name, p.Age)
-}
-func main() {
-    // Create an instance of the Person struct
-    p := Person{
-        Name: "Alice",
-        Age:  30,
-    }
-    // Call the Greet method on the Person instance
-    p.Greet()
-}
-```
-
 #### 13. What are `Methods` in Go?
 
 **Explanation:**
