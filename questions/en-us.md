@@ -171,11 +171,32 @@ func main() {
 }
 ```
 
+#### 20. What is the difference between type and interface in Go?
+
+**Answer:**
+
+> In Go, type and `interface` serve different purposes. type is used to define concrete data structures, aliases, function signatures, or custom primitive types. It lets you create named types like structs, slices, maps, or function types that model data or behavior. `interface` defines a set of method signatures that a type must implement to satisfy the `interface`. It models abstract behavior and enables polymorphism. While type creates the actual structure or alias, interface specifies a contract of methods that concrete types should fulfill.
+
+```go
+type Point struct { X, Y int }  // defines a concrete struct type
+
+type Shape interface {          // defines a behavior contract
+    Area() float64
+}
+
+func (p Point) Area() float64 {  // Point implements Shape
+    return float64(p.X * p.Y)
+}
+```
+
 > **Explanation:**
 >
-> - `Person` is a struct type with three fields: `Name` (string), `Age` (int), and `Email` (string).
-> - An instance of `Person` is created and initialized with values for each field.
-> - Fields are accessed using the dot notation, e.g., `p.Name`.
+> `type` defines data, structure, or aliases.
+> `interface` defines required method sets for polymorphism.
+>
+> - Person is a struct type with three fields: Name (string), Age (int), and Email (string).
+> - An instance of Person is created and initialized with values for each field.
+> - Fields are accessed using the dot notation, e.g., p.Name.
 
 ## ❗❗ Tricky Questions ❗❗
 
