@@ -479,3 +479,21 @@ func main() {
     // 2
 }
 ```
+
+### 15. Defina tipos first-class citizen em Golang.
+
+**Explicação:**
+
+> Em Golang, os tipos first-class citizen são estruturas de dados embutidas que têm suporte completo na linguagem. Isso significa que você pode::
+>
+> 1.Atribuí-los a variáveis
+> 2.Passá-los como argumentos para funções
+> 3.Retorná-los de funções
+> 4.Armazená-los em outros contêineres
+>
+> Tipos comuns de contêineres de primeira classe em Go:
+>
+> - Slices: []int, []string, etc.
+> - Maps: map[string]int, map[int]string, etc.
+> - Arrays: [5]int, [3]string, etc.
+> - Channels: chan int, chan string, etc.
