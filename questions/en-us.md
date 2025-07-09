@@ -477,3 +477,21 @@ func main() {
     // 2
 }
 ```
+
+### 15. Define first-class citizen container types within Golang.
+
+**Explanation:**
+
+> In Golang, first-class citizen container types are built-in data structures that have full support in the language. This means you can:
+>
+> 1. Assign them to variables
+> 2. Pass them to functions
+> 3. Return them from functions
+> 4. Store them in other containers
+
+> Common First-Class Container Types in Go:
+>
+> - Slices: []int, []string, etc.
+> - Maps: map[string]int, map[int]string, etc.
+> - Arrays: [5]int, [3]string, etc.
+> - Channels: chan int, chan string, etc.
