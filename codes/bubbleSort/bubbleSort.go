@@ -1,4 +1,4 @@
-package bubbleSort
+package main
 
 import (
 	"fmt"
@@ -44,6 +44,6 @@ func Sort(list []int) {
 	fmt.Println("> After: ", list)
 }
 
-func Example() {
+func main() {
 	Sort(GenerateData(20))
 }
