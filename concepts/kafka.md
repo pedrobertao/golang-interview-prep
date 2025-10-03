@@ -125,3 +125,43 @@ Best practices when using Go with Kafka:
 💡 **Key principle:**  
 Kafka serves as the backbone for reliable, auditable, scalable real-time data pipelines in modern banking systems.  
 When combined with **Golang for service implementation**, teams can achieve robust, high-performance event-driven architectures that meet strict regulatory requirements.
+
+1. Misconfigured Producer/Consumer Properties
+
+Example: Forgetting to set acks=all on producers or using an inappropriate auto.offset.reset value on consumers.
+
+Why It Happens: Kafka’s defaults may not match your reliability needs — for example, acks=1 might lead to data loss in broker failures, and auto.offset.reset=latest might skip important historical data.
+
+How to Avoid:
+
+Carefully configure producer acknowledgments (acks=all, retries, linger.ms) for durability and throughput balance.
+
+Set auto.offset.reset=earliest for new consumers if you need to process historical data.
+
+Tune max.poll.interval.ms and session.timeout.ms to match your processing workload.
+
+2. Not Handling Consumer Lag or Rebalancing Properly
+
+Example: Long processing times in consumers lead to session.timeout expirations, forcing group rebalances and causing duplicate processing.
+
+Why It Happens: Kafka assumes consumers will poll regularly — if they don’t, Kafka kicks them out of the group.
+
+How to Avoid:
+
+Increase max.poll.interval.ms if processing is long.
+
+Use manual offset commits after processing is complete to ensure “at-least-once” delivery.
+
+Monitor consumer lag via Kafka metrics or tools like Prometheus/Grafana.
+
+3. Underestimating Partitioning and Keying
+
+Example: Producing messages with no key (or a random key) results in uneven partition distribution and processing hot-spots.
+
+Why It Happens: Developers often forget that partitioning affects parallelism and message ordering.
+
+How to Avoid:
+
+Choose a meaningful key to preserve ordering for related events (e.g., by user ID, order ID).
+
+Ensure enough partitions are created at topic creation to handle future throughput needs — increasing partitions later may break ordering guarantees.
