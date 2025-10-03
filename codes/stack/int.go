@@ -2,16 +2,16 @@ package main
 
 import "fmt"
 
-type StatckString struct {
-	items []string
+type StackInt struct {
+	items []int
 	size  int
 }
 
 func main() {
-	s := NewStackString()
-	s.Add("Hhello")
-	s.Add("World")
-	s.Add("From golang")
+	s := NewStackInt()
+	s.Add(1)
+	s.Add(2)
+	s.Add(3)
 	s.Print()
 	fmt.Println("Peek:", s.Peek())
 	fmt.Println("Bottom:", s.Bottom())
@@ -29,19 +29,19 @@ func main() {
 	fmt.Println("Size:", s.Size())
 }
 
-func NewStackString() *StatckString {
-	return &StatckString{
-		items: make([]string, 0),
+func NewStackInt() *StackInt {
+	return &StackInt{
+		items: make([]int, 0),
 	}
 }
-func (s *StatckString) Add(item string) {
+func (s *StackInt) Add(item int) {
 	s.items = append(s.items, item)
 	s.size = len(s.items) - 1
 }
 
-func (s *StatckString) Pop() string {
+func (s *StackInt) Pop() int {
 	if s.size == 0 {
-		return ""
+		return 0
 	}
 	peek := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1]
@@ -49,31 +49,31 @@ func (s *StatckString) Pop() string {
 	return peek
 }
 
-func (s *StatckString) Size() int {
+func (s *StackInt) Size() int {
 	return s.size + 1
 }
 
-func (s *StatckString) Bottom() string {
+func (s *StackInt) Bottom() int {
 	if s.size == 0 {
-		return ""
+		return 0
 	}
 	return s.items[0]
 
 }
 
-func (s *StatckString) Peek() string {
+func (s *StackInt) Peek() int {
 	if s.size == 0 {
-		return ""
+		return 0
 	}
 	return s.items[len(s.items)-1]
 }
 
-func (s *StatckString) Print() {
+func (s *StackInt) Print() {
 	if s.size == 0 {
 		fmt.Println("Empty")
 		return
 	}
-	for i, r := range s.items {
-		fmt.Printf("%d: %s\n", i+1, string(r))
+	for i, item := range s.items {
+		fmt.Printf("%d: %d\n", i+1, item)
 	}
 }
